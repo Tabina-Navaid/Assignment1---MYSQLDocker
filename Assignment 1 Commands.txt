@@ -1,0 +1,45 @@
+--Log into docker account
+docker login 
+
+--Pulling mysql image 
+docker pull mysql
+
+--Creating mysql container  
+docker run --name TN_connect11 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=tn123 -d mysql
+
+--Check which container is running
+docker ps
+
+--Opening mysql in docker container
+docker exec -it TN_connect11 /bin/bash
+mysql -uroot -p -A
+
+--Creating database inside mysql container
+CREATE DATABASE online_admission;
+
+--Accessing database
+USE online_admission
+
+--Inside database creating table
+CREATE TABLE CANDIDATE(
+Name varchar(225), 
+Address varchar(225),
+City varchar(25));
+
+--Show Table
+DESC CANDIDATE
+
+--Exit the mysql container
+EXIT
+
+--Stopping docker mysql image
+docker stop TN_connect11
+
+VIDEO LINK
+https://youtu.be/Ih7Ww19LNuo
+
+  
+
+
+
+
